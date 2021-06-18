@@ -5,5 +5,6 @@ This is a godot project where I'm trying to develop a tower-defence game. As of 
 * Every time the game runs it generates a new maze and places the start flag in the top left corner, and the finish flag at a random location.
 * It then proceeds to solve the maze using a Navigation2D object, and on the delta the animated sprite moves along the path until it reaches the finish flag.
 * The maze is guaranteed to be solvable as it is based on a connected graph.
+* The tileset can modified to make the walls wider and can also be used as an autotile.
 
 I developed all the sprites from scratch using aseprite.
