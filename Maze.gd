@@ -30,7 +30,7 @@ onready var alien: KinematicBody2D = $SpaceInvader
 
 func update_path():		
 	solution = navigation2D.get_simple_path(startPosition.position, endPosition.position)			
-	line.width = 0		
+	line.width = 10		
 	for p in solution:		
 		line.add_point(p)
 		yield(get_tree(), "idle_frame")
