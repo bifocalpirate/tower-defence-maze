@@ -10,7 +10,7 @@ config_version=4
 
 [application]
 
-config/name="Maze"
+config/name="Tower Defence Base"
 run/main_scene="res://Maze.tscn"
 config/icon="res://icon.png"
 

@@ -12,7 +12,7 @@ var cell_walls = {Vector2(0,-1):N,
 				
 var width = 30
 var height = 10
-var solution = []
+var solution:PoolVector2Array = []
 var CAMERA_ZOOM = Vector2(2,2)
 const FLAG_OFFSET = Vector2(32,35)
 #fraction of wall to remove
@@ -28,14 +28,6 @@ onready var pathFollow2D: PathFollow2D = $Path2D/PathFollow2D
 onready var alien: KinematicBody2D = $SpaceInvader
 
 
-func update_path():		
-	solution = navigation2D.get_simple_path(startPosition.position, endPosition.position)			
-	line.width = 10		
-	for p in solution:		
-		line.add_point(p)
-		yield(get_tree(), "idle_frame")
-	
-	
 func get_vector_for_direction(direction):
 	if direction == N:
 		return Vector2(0,-1)
@@ -54,9 +46,7 @@ func _ready():
 	seed(randi())		
 	make_maze()
 	#erase_walls()	
-	set_start_and_end()
-	update_path()	
-	
+	set_start_and_end()	
 	alien.navigation2d = navigation2D
 	alien.target = endPosition
 

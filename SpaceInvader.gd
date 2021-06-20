@@ -13,7 +13,7 @@ func set_target(value):
 	update_path()
 
 func update_path():		
-	path = navigation2d.get_simple_path(position, target.position, false)	
+	path = navigation2d.get_simple_path(position, target.position)	
 	if path.size() == 0: #can't find a route
 		queue_free()
 	
@@ -23,10 +23,17 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):	
+	
+		
 	if path.size() >1:		
 		var d = position.distance_to(path[0])
+		
 		if d > 2:						
 			position = position.linear_interpolate(path[0], (AlienSpeed * delta)/d)						
+			var j=0
+			for k in range(path.size()-1):				
+				draw_line(path[k], path[j+1], Color.black,5.0)	
+				j =+ 1
 		else:			
 			path.remove(0)			
 	else:
